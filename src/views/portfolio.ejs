@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body class="portfolio-body">
+    <%- include('partials/nav', { title: title, user: user }) %>
+    <main class="portfolio-shell">
+        <section class="hero">
+            <h1>About me</h1>
+            <div class="hero-content">
+                <div class="portrait">
+                    <img src="https://placehold.co/221x283" alt="Profile portrait">
+                </div>
+                <div class="bio">
+                    <p class="name">최정희 / choi jung hee</p>
+                    <p class="meta">2005.03.19</p>
+                    <a class="link" href="mailto:jung050319@gmail.com">jung050319@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid two-up">
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Project</h2>
+                    <p class="hint">최근 작업 및 실험</p>
+                </div>
+                <div class="project-list">
+                    <% if (projects.length > 0) { %>
+                        <% projects.forEach(function(project) { %>
+                            <article class="project-card <%= project.is_completed ? 'done' : '' %>">
+                                <div class="pill"><%= project.is_completed ? '완료' : '진행중' %></div>
+                                <h3><%= project.title %></h3>
+                                <p class="stamp"><%= project.created_at ? project.created_at.toLocaleDateString() : '최근 업데이트' %></p>
+                            </article>
+                        <% }); %>
+                    <% } else { %>
+                        <p class="empty">아직 등록된 프로젝트가 없습니다.</p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Education</h2>
+                    <p class="hint">학력 및 과정</p>
+                </div>
+                <ul class="timeline">
+                    <li>2017 화랑초등학교 졸업</li>
+                    <li>2021 단원중학교 졸업</li>
+                    <li>2024 원곡고등학교 졸업</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="grid two-up">
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Skills</h2>
+                    <p class="hint">사용하는 도구와 스택</p>
+                </div>
+                <div class="chips">
+                    <% skills.forEach(function(skill) { %>
+                        <span class="chip"><%= skill %></span>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="panel contact-panel">
+                <div class="panel-head">
+                    <h2>Contact</h2>
+                    <p class="hint">함께 이야기해요</p>
+                </div>
+                <ul class="contact-list">
+                    <li><span class="label">Email</span><a href="mailto:jung050319@gmail.com">jung050319@gmail.com</a></li>
+                    <li><span class="label">GitHub</span><a href="<%= contactLinks.github %>" target="_blank" rel="noreferrer"><%= contactLinks.github %></a></li>
+                    <li><span class="label">Blog</span><a href="<%= contactLinks.blog %>" target="_blank" rel="noreferrer"><%= contactLinks.blog %></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

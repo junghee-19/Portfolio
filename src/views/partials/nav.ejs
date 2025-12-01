@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="page-title">
+        <%= title %>
+    </div>
+    <ul class="menu">
+        <% if (user && user.email === 'admin@example.com') { %>
+            <li><a href="/admin" class="<%= title === 'Portfolio 추가' ? 'active' : '' %>">포트폴리오 추가</a></li>
+        <% } %>
+        <li><a href="/logout">로그아웃</a></li>
+    </ul>
+</nav>

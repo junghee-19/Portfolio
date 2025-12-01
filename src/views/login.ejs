@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="portfolio-body auth-body">
+    <div class="auth-shell">
+        <div class="auth-card">
+            <p class="eyebrow">포트폴리오 전시</p>
+            <h1 class="auth-title">Portfo()io</h1>
+            <p class="auth-subtitle">이메일과 비밀번호를 입력해 주세요.</p>
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+            <form action="/login" method="POST" class="auth-form">
+                <label for="email" class="input-label">이메일</label>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <label for="password" class="input-label">비밀번호</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="primary-button">로그인</button>
+            </form>
+            <div class="auth-footer">
+                <p>계정이 없으신가요? <a href="/signup">가입하기</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

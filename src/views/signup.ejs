@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="portfolio-body auth-body">
+    <div class="auth-shell">
+        <div class="auth-card">
+            <p class="eyebrow">포트폴리오 전시</p>
+            <h1 class="auth-title">계정 만들기</h1>
+            <p class="auth-subtitle">간단히 가입하고 작품을 둘러보세요.</p>
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+            <form action="/signup" method="POST" class="auth-form">
+                <label for="username" class="input-label">이름</label>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="이름 혹은 닉네임" required>
+                </div>
+                <label for="email" class="input-label">이메일</label>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <label for="password" class="input-label">비밀번호</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="primary-button">가입하기</button>
+            </form>
+            <div class="auth-footer">
+                <p>이미 계정이 있으신가요? <a href="/">로그인</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
