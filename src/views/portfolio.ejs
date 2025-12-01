@@ -49,11 +49,15 @@
                     <h2>Education</h2>
                     <p class="hint">학력 및 과정</p>
                 </div>
-                <ul class="timeline">
-                    <li>2017 화랑초등학교 졸업</li>
-                    <li>2021 단원중학교 졸업</li>
-                    <li>2024 원곡고등학교 졸업</li>
-                </ul>
+                <% if (education.length > 0) { %>
+                    <ul class="timeline">
+                        <% education.forEach(function(item) { %>
+                            <li><strong><%= item.institution %></strong> <%= item.detail ? item.detail : '' %> <%= item.period ? '(' + item.period + ')' : '' %></li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p class="empty">등록된 학력이 없습니다.</p>
+                <% } %>
             </div>
         </section>
 
@@ -63,22 +67,37 @@
                     <h2>Skills</h2>
                     <p class="hint">사용하는 도구와 스택</p>
                 </div>
-                <div class="chips">
-                    <% skills.forEach(function(skill) { %>
-                        <span class="chip"><%= skill %></span>
-                    <% }); %>
-                </div>
+                <% if (skills.length > 0) { %>
+                    <div class="chips">
+                        <% skills.forEach(function(skill) { %>
+                            <span class="chip"><%= skill %></span>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <p class="empty">등록된 스킬이 없습니다.</p>
+                <% } %>
             </div>
             <div class="panel contact-panel">
                 <div class="panel-head">
                     <h2>Contact</h2>
                     <p class="hint">함께 이야기해요</p>
                 </div>
-                <ul class="contact-list">
-                    <li><span class="label">Email</span><a href="mailto:jung050319@gmail.com">jung050319@gmail.com</a></li>
-                    <li><span class="label">GitHub</span><a href="<%= contactLinks.github %>" target="_blank" rel="noreferrer"><%= contactLinks.github %></a></li>
-                    <li><span class="label">Blog</span><a href="<%= contactLinks.blog %>" target="_blank" rel="noreferrer"><%= contactLinks.blog %></a></li>
-                </ul>
+                <% if (contacts.length > 0) { %>
+                    <ul class="contact-list">
+                        <% contacts.forEach(function(contact) { %>
+                            <li>
+                                <span class="label"><%= contact.label %></span>
+                                <% if (contact.url) { %>
+                                    <a href="<%= contact.url %>" target="_blank" rel="noreferrer"><%= contact.value %></a>
+                                <% } else { %>
+                                    <span><%= contact.value %></span>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p class="empty">등록된 연락처가 없습니다.</p>
+                <% } %>
             </div>
         </section>
     </main>
